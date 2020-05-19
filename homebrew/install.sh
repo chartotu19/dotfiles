@@ -21,4 +21,6 @@ then
 
 fi
 
+brew install tig
+brew cask install visual-studio-code
 exit 0
