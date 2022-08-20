@@ -22,25 +22,25 @@ then
 fi
 
 brew install tig
-brew cask install visual-studio-code
+brew install visual-studio-code --cask
 brew install kubectl
 brew install findutils
 brew install wget
 brew install tree
 brew install netcat
 brew install telnet
-brew install nvm
 brew install jq
 brew install argoproj/tap/argo
 brew install helm
 brew install mysql
 brew tap homebrew/cask
-brew cask install jumpcut
-brew install skaffold
+brew install jumpcut --cask
 brew install envchain
 brew install stern
 brew install hey
 brew install nmap
+brew install java
+brew install jenv
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 # brew install aircrack-ng
 # brew install bfg
