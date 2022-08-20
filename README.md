@@ -29,7 +29,7 @@ There's a few special files in the hierarchy.
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone git@github.com:chartotu19/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
