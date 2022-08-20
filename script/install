@@ -4,7 +4,10 @@
 
 set -e
 
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 cd "$(dirname $0)"/..
 
 # find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+find . -name install.sh | while read installer ; do echo "installing ${bold}${installer}${normal}...";sh -c "${installer}" ; done
