@@ -41,6 +41,8 @@ brew install hey
 brew install nmap
 brew install java
 brew install jenv
+brew install pyenv
+brew install pyenv-virtualenv
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 # brew install aircrack-ng
 # brew install bfg
