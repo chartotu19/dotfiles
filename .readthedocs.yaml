@@ -6,7 +6,7 @@ build:
     python: "3.12"
   jobs:
     post_build:
-      - llms-txt
+      - llms-txt --docs-dir $READTHEDOCS_OUTPUT/html
 
 mkdocs:
   configuration: mkdocs.yml
