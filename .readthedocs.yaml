@@ -6,8 +6,6 @@ build:
     python: "3.12"
   jobs:
     post_build:
-      - ls -la $READTHEDOCS_OUTPUT
-      - ls -la $READTHEDOCS_OUTPUT/html
       - llms-txt --docs-dir $READTHEDOCS_OUTPUT/html
 
 mkdocs:
