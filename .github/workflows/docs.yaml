@@ -30,4 +30,7 @@ jobs:
           ls -la
           pwd
       - name: llms-txt-action
-        uses: demodrive-ai/llms-txt-action@7a16ba5e614d6f05e8d5b778feaafacef0b56555
+        uses: demodrive-ai/llms-txt-action@cec393cc3759c403d349253aeec01192a4310554
+
+      - name: Deploy to Github
+        run : mkdocs gh-deploy --dirty
