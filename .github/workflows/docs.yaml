@@ -33,4 +33,4 @@ jobs:
         uses: demodrive-ai/llms-txt-action@cec393cc3759c403d349253aeec01192a4310554
 
       - name: Deploy to Github
-        run : mkdocs gh-deploy --dirty
+        run : mkdocs gh-deploy
