@@ -152,5 +152,40 @@ then
   fi
 fi
 
+# If we're on Linux, install zsh and run installers
+if [ "$(uname -s)" == "Linux" ]
+then
+  info "setting up Linux environment"
+
+  # Install zsh if not present
+  if ! command -v zsh &> /dev/null
+  then
+    info "installing zsh"
+    if command -v apt-get &> /dev/null
+    then
+      sudo apt-get update && sudo apt-get install -y zsh
+    elif command -v dnf &> /dev/null
+    then
+      sudo dnf install -y zsh
+    elif command -v yum &> /dev/null
+    then
+      sudo yum install -y zsh
+    elif command -v pacman &> /dev/null
+    then
+      sudo pacman -S --noconfirm zsh
+    else
+      fail "Could not detect package manager to install zsh"
+    fi
+    success "zsh installed"
+  else
+    success "zsh already installed"
+  fi
+
+  # Run all install.sh scripts
+  info "running installers"
+  $DOTFILES_ROOT/script/install
+  success "installers completed"
+fi
+
 echo ''
 echo 'All installed!'
