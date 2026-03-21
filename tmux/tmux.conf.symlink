@@ -1,0 +1,103 @@
+# ============================================================
+# tmux configuration
+# ============================================================
+
+# --- Sensible defaults ---
+
+# Use 256 colors and true color
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+
+# Increase scrollback buffer
+set -g history-limit 50000
+
+# Start window and pane numbering at 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Renumber windows when one is closed
+set -g renumber-windows on
+
+# Reduce escape delay (important for vim)
+set -sg escape-time 10
+
+# Enable mouse support
+set -g mouse on
+
+# --- Key bindings ---
+
+# Easier split panes (keep current path)
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+# New windows keep current path
+bind c new-window -c "#{pane_current_path}"
+
+# Vim-style pane navigation
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Pane resize (hold prefix + H/J/K/L to resize)
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Interactive choose-tree: browse sessions, windows, and panes visually
+bind w choose-tree -Zw
+bind s choose-tree -Zs
+
+# Quick pane switching with Alt+arrow (no prefix needed)
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Quick window switching with Shift+arrow (no prefix needed)
+bind -n S-Left previous-window
+bind -n S-Right next-window
+
+# Swap panes
+bind > swap-pane -D
+bind < swap-pane -U
+
+# Toggle zoom on current pane
+bind z resize-pane -Z
+
+# Display pane numbers for quick selection (prefix + q, then hit the number)
+set -g display-panes-time 3000
+
+# Reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
+
+# --- Plugins (managed by TPM) ---
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-sessionist'
+
+# --- tmux-resurrect settings ---
+
+# Restore pane contents
+set -g @resurrect-capture-pane-contents 'on'
+
+# Restore vim/neovim sessions
+set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-strategy-nvim 'session'
+
+# --- tmux-continuum settings ---
+
+# Auto-save every 15 minutes
+set -g @continuum-save-interval '15'
+
+# Auto-restore on tmux server start
+set -g @continuum-restore 'on'
+
+# Start tmux automatically on boot (via systemd on Linux)
+set -g @continuum-boot 'on'
+
+# --- Initialize TPM (keep this at the very bottom) ---
+run '~/.tmux/plugins/tpm/tpm'
