@@ -1,0 +1,11 @@
+# terraform aliases
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfd='terraform destroy'
+alias tff='terraform fmt'
+alias tfv='terraform validate'
+alias tfo='terraform output'
+alias tfs='terraform state'
+alias tfw='terraform workspace'
