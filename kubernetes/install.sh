@@ -55,8 +55,8 @@ install_kubectl() {
 
   case "$PKG_MANAGER" in
     brew)
-      # Skip - homebrew/install.sh already handles this
-      success "kubectl installed via homebrew"
+      brew install kubectl
+      success "kubectl installed"
       ;;
     apt)
       # Install kubectl via official apt repository
@@ -178,8 +178,8 @@ install_helm() {
 
   case "$PKG_MANAGER" in
     brew)
-      # Skip - homebrew/install.sh already handles this
-      success "helm installed via homebrew"
+      brew install helm
+      success "helm installed"
       ;;
     pacman)
       sudo pacman -S --noconfirm helm
@@ -224,6 +224,20 @@ info "detected platform: $OS ($PKG_MANAGER)"
 install_kubectl
 install_helm
 install_gcloud
+
+# Install Argo CLI
+if ! command -v argo > /dev/null 2>&1; then
+  info "installing argo"
+  case "$PKG_MANAGER" in
+    brew)
+      brew install argoproj/tap/argo
+      success "argo installed"
+      ;;
+    *)
+      info "skipping argo (install manually on non-macOS)"
+      ;;
+  esac
+fi
 
 # Install gke-gcloud-auth-plugin if gcloud is available
 if command -v gcloud > /dev/null 2>&1; then
