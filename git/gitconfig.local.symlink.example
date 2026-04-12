@@ -1,5 +1,13 @@
 [user]
         name = AUTHORNAME
         email = AUTHOREMAIL
+        signingkey = GIT_SIGNING_KEY
 [credential]
         helper = GIT_CREDENTIAL_HELPER
+[gpg]
+        format = ssh
+[gpg "ssh"]
+        program = GIT_SSH_SIGN_PROGRAM
+        allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+        gpgsign = true

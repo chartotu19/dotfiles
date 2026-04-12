@@ -32,19 +32,8 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
-[credential]
-	helper = osxkeychain
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[gpg]
-	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
-	allowedSignersFile = /home/pettergriffin/.ssh/allowed_signers
-[commit]
-	gpgsign = true
-[user]
-	signingkey = /home/pettergriffin/.ssh/personal-git.pub

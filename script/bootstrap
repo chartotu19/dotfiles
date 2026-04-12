@@ -33,17 +33,21 @@ setup_gitconfig () {
     info 'setup gitconfig'
 
     git_credential='cache'
+    git_ssh_sign_program='/opt/1Password/op-ssh-sign'
     if [ "$(uname -s)" == "Darwin" ]
     then
       git_credential='osxkeychain'
+      git_ssh_sign_program='/Applications/1Password.app/Contents/MacOS/op-ssh-sign'
     fi
 
     user ' - What is your github author name?'
     read -e git_authorname
     user ' - What is your github author email?'
     read -e git_authoremail
+    user ' - What is your SSH signing key? (e.g. ssh-ed25519 AAAA...)'
+    read -e git_signing_key
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s|GIT_SSH_SIGN_PROGRAM|$git_ssh_sign_program|g" -e "s|GIT_SIGNING_KEY|$git_signing_key|g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
     success 'gitconfig'
   fi
