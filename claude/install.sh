@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ "$(uname -s)" == "Darwin" ] ; then
     if ! brew list --cask claude &> /dev/null ; then
         brew install --cask claude

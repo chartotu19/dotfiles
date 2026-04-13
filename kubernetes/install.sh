@@ -22,7 +22,6 @@ fail () {
 # Detect OS and package manager
 detect_platform() {
   OS="$(uname -s)"
-  DISTRO=""
   PKG_MANAGER=""
 
   if [ "$OS" = "Darwin" ]; then
@@ -30,16 +29,16 @@ detect_platform() {
   elif [ "$OS" = "Linux" ]; then
     if command -v apt-get > /dev/null 2>&1; then
       PKG_MANAGER="apt"
-      DISTRO="debian"
+
     elif command -v pacman > /dev/null 2>&1; then
       PKG_MANAGER="pacman"
-      DISTRO="arch"
+
     elif command -v dnf > /dev/null 2>&1; then
       PKG_MANAGER="dnf"
-      DISTRO="fedora"
+
     elif command -v yum > /dev/null 2>&1; then
       PKG_MANAGER="yum"
-      DISTRO="rhel"
+
     fi
   fi
 }

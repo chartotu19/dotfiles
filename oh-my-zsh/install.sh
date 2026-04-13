@@ -1,3 +1,4 @@
+#!/bin/bash
 OH_MY_ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$OH_MY_ZSH/custom
 

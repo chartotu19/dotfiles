@@ -1,3 +1,4 @@
+#!/bin/bash
 if ! command -v tmux &> /dev/null ; then
     if command -v brew &> /dev/null ; then
         brew install tmux
