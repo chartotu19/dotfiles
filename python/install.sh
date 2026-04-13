@@ -12,3 +12,7 @@ if ! command -v pyenv &> /dev/null ; then
         sudo pacman -S --noconfirm pyenv
     fi
 fi
+
+if ! command -v uv &> /dev/null ; then
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
